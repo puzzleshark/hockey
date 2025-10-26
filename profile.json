@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "name": "Ender 3",
+  "inherits": "fdmprinter",
+  "metadata": {
+    "type": "machine",
+    "manufacturer": "Creality",
+    "model": "Ender 3"
+  },
+  "overrides": {
+    "machine_width": { "default_value": 220 },
+    "machine_depth": { "default_value": 220 },
+    "machine_height": { "default_value": 250 },
+    "machine_nozzle_size": { "default_value": 0.4 },
+    "material_diameter": { "default_value": 1.75 },
+    "layer_height": { "default_value": 0.2 },
+    "wall_thickness": { "default_value": 0.8 },
+    "top_bottom_thickness": { "default_value": 0.8 },
+    "infill_sparse_density": { "default_value": 20 },
+    "material_print_temperature": { "default_value": 200 },
+    "material_bed_temperature": { "default_value": 60 },
+    "speed_print": { "default_value": 50 },
+    "machine_start_gcode": { "default_value": "G28 ;Home\nG1 Z15.0 F6000 ;Move the platform down 15mm\nG92 E0 ;Reset Extruder\nG1 F200 E3 ;Extrude 3mm of feed stock\nG92 E0 ;Reset Extruder" },
+    "machine_end_gcode": { "default_value": "M104 S0 ;Turn-off hotend\nM140 S0 ;Turn-off bed\nM107 ;Turn-off fan\nG91 ;Relative positioning\nG1 E-2 F2700 ;Retract a bit\nG1 E-2 Z0.2 F2400 ;Retract and raise Z\nG1 X5 Y5 F3000 ;Wipe out\nG1 Z10 ;Raise Z more\nG90 ;Absolute positioning\nG1 X0 Y220 ;Present print\nM84 ;Disable all steppers" }
+  }
+}

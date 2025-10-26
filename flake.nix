@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/release-24.11";
   };
 
   outputs = { self, nixpkgs }: {
@@ -19,10 +19,10 @@
 
     packages.x86_64-linux.gcode = nixpkgs.legacyPackages.x86_64-linux.stdenv.mkDerivation {
       name = "mini-hockey-puck-gcode";
-      buildInputs = [ nixpkgs.legacyPackages.x86_64-linux.prusa-slicer nixpkgs.legacyPackages.x86_64-linux.xorg.xvfb ];
+      buildInputs = [ nixpkgs.legacyPackages.x86_64-linux.prusa-slicer nixpkgs.legacyPackages.x86_64-linux.xvfb-run ];
       src = self.packages.x86_64-linux.stl;
       buildPhase = ''
-        xvfb-run prusa-slicer --printer-profile "Creality Ender 3" --export-gcode mini_puck.gcode mini_puck.stl
+        prusa-slicer --printer-profile "Creality Ender 3" --export-gcode mini_puck.gcode mini_puck.stl
       '';
       installPhase = ''
         mkdir -p $out
