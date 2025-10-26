@@ -9,7 +9,7 @@
       src = ./.;
       buildInputs = [ nixpkgs.legacyPackages.x86_64-linux.openscad ];
       buildPhase = ''
-        openscad --export-format stl mini_puck.scad
+        openscad -o mini_puck.stl mini_puck.scad
       '';
       installPhase = ''
         mkdir -p $out
