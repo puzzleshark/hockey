@@ -24,8 +24,8 @@
       ${pkgs.super-slicer}/bin/superslicer --help
     '';
 
-    packages.x86_64-linux.try = pkgs.writeScriptBin "another" {} ''
-      ${pkgs.super-slicer}/bin/superslicer --help
+    packages.x86_64-linux.try = pkgs.writeShellScriptBin "another" ''
+      ${pkgs.super-slicer}/bin/superslicer -o . -g ${self.packages.x86_64-linux.stl}/mini_puck.stl
     '';
 
   };
