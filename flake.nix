@@ -6,11 +6,10 @@
   outputs = { self, nixpkgs }: let
     pkgs = nixpkgs.legacyPackages.x86_64-linux;
   in {
-    # packages.x86_64-linux.cura = nixpkgs.legacyPackages.x86_64-linux
     packages.x86_64-linux.stl = pkgs.stdenv.mkDerivation {
       name = "mini-hockey-puck";
       src = ./.;
-      buildInputs = [ nixpkgs.legacyPackages.x86_64-linux.openscad ];
+      buildInputs = [ pkgs.openscad ];
       buildPhase = ''
         openscad -o mini_puck.stl mini_puck.scad
       '';
